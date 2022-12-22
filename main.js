@@ -4,11 +4,16 @@ const path = require('path')
 
 function createWindow () {
   // Create the browser window.
+  tags = [];
+  for(let i = 0; i < 20; ++i) {
+    tags.push(`--window-tag${i}=window-tag${i}`);
+  }
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      additionalArguments: tags,
     }
   })
 
